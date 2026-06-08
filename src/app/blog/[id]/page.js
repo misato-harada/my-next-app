@@ -1,5 +1,7 @@
 import { client } from '@/libs/microcms'
 
+export const revalidate = 60 // 60秒ごとに更新（ISR）
+
 export default async function BlogDetailPage({ params }) {
   const { id } = await params
 

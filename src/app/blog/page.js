@@ -1,10 +1,12 @@
 import { client } from '@/libs/microcms'
 import Link from 'next/link'
 
+export const revalidate = 60 // 60秒ごとに更新（ISR）
+
 export default async function BlogPage() {
- const data = await client.get({
-  endpoint: 'blogs',
-})
+  const data = await client.get({
+    endpoint: 'blogs',
+  })
 
   return (
     <div className="max-w-5xl mx-auto p-8">
