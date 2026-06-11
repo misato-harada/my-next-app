@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import MemberCard from '@/components/MemberCard'
 
 const members = [
   { id: 1, name: '原田', role: 'デザイナー', image: 'https://picsum.photos/seed/1/400/300' },
@@ -24,7 +25,6 @@ export default function MembersPage() {
     <div className="max-w-5xl mx-auto p-8">
       <h1 className="text-3xl font-bold mb-8">メンバー紹介</h1>
 
-      {/* フィルターボタン */}
       <div className="flex gap-4 mb-8">
         {roles.map((role) => (
           <button
@@ -41,23 +41,14 @@ export default function MembersPage() {
         ))}
       </div>
 
-      {/* メンバーカード */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredMembers.map((member) => (
-          <div
+          <MemberCard
             key={member.id}
-            className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden"
-          >
-            <img
-              src={member.image}
-              alt={member.name}
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-6">
-              <h2 className="text-xl font-bold">{member.name}</h2>
-              <p className="text-gray-500 mt-1">{member.role}</p>
-            </div>
-          </div>
+            name={member.name}
+            role={member.role}
+            image={member.image}
+          />
         ))}
       </div>
     </div>
